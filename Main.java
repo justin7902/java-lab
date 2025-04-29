@@ -1,46 +1,39 @@
-class student{
-    String name;
-    int academicScore;
 
-    public student(String name,int acadamicScore){
-        this.name=name;
-        this.academicScore=acadamicScore;
+
+class ComplexNumber {
+    double real;  
+    double imaginary;  
+
+    // Constructor to initialize the complex number
+    ComplexNumber(double real, double imaginary) {
+        this.real = real;
+        this.imaginary = imaginary;
     }
 
-    public void displayAcadamecScore(){
-        System.out.println("Student Name:" +name);
-        System.out.println("Acadamic Score:" +academicScore);
-    }
-}
-
-interface Sports{
-    int getSportsScore();
-    void dispalySportsScore();
-}
-
-class Result extends student implements Sports{
-    int sportsScore;
-    public Result(String name,int acadamicScore,int sportsScore){
-        super(name,acadamicScore);
-        this.sportsScore=sportsScore;
+    // Method to add another complex number to the current complex number
+    ComplexNumber add(ComplexNumber other) {
+        double newReal = this.real + other.real;  // Add real parts
+        double newImaginary = this.imaginary + other.imaginary;  // Add imaginary parts
+        return new ComplexNumber(newReal, newImaginary);  // Return the new complex number
     }
 
-    public int getSportsScore(){
-        return sportsScore;
-    }
-    public void dispalySportsScore(){
-        System.out.println("Sports Score:" +sportsScore);
-    }
     
-    public void displayResult(){
-        displayAcadamecScore();
-        dispalySportsScore();
+    void display() {
+        System.out.println(real + " + " + imaginary + "i");
     }
 }
 
-public class Main{
-    public static void main(String[] args){
-        Result student1 = new Result("Alice", 88, 92);
-        student1.displayResult();
+public class Main {
+    public static void main(String[] args) {
+        
+        ComplexNumber complexNum1 = new ComplexNumber(3, 4);
+        ComplexNumber complexNum2 = new ComplexNumber(1, 2);
+
+        
+        ComplexNumber result = complexNum1.add(complexNum2);
+
+    
+        System.out.print("Result of adding the two complex numbers: ");
+        result.display();
     }
 }
